@@ -1,7 +1,8 @@
 # Multi stage docker file for the Attendize application layer images
 
 # Base image with nginx, php-fpm and composer built on debian
-FROM wyveo/nginx-php-fpm:php74 as base
+FROM webdevops/php-nginx:7.4 as base
+RUN apt-key adv --fetch-keys https://nginx.org/keys/nginx_signing.key
 RUN apt-get update && apt-get install -y wait-for-it libxrender1
 
 # Set up code
